@@ -1,0 +1,185 @@
+<mvc:View
+    controllerName="ordersui.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+
+    <uxap:ObjectPageLayout
+        id="objectPageLayout"
+        useIconTabBar="true"
+        showTitleInHeaderContent="false"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false">
+
+        <!-- ═══════════════════════════════════════════════════════════
+             HEADER TITLE — "Order 7375"  +  expand / close / email
+        ════════════════════════════════════════════════════════════ -->
+        <uxap:headerTitle>
+
+            <uxap:ObjectPageDynamicHeaderTitle>
+
+                <uxap:expandedHeading>
+                    <Title text="{orderNo}" level="H2" />
+                </uxap:expandedHeading>
+
+                <uxap:snappedHeading>
+                    <Title text="{orderNo}" level="H3" />
+                </uxap:snappedHeading>
+
+                <!-- top-right: expand ⤢  close ✕  email ✉ -->
+                <uxap:actions>
+                    <uxap:ObjectPageHeaderActionButton
+                        id="expandColumnBtn"
+                        icon="sap-icon://full-screen"
+                        tooltip="Expand to Full Screen"
+                        press=".onExpandDetail"
+                        type="Transparent" />
+                    <uxap:ObjectPageHeaderActionButton
+                        id="closeColumnBtn"
+                        icon="sap-icon://decline"
+                        tooltip="Close Detail Panel"
+                        press=".onCloseDetail"
+                        type="Transparent" />
+                    <uxap:ObjectPageHeaderActionButton
+                        id="emailOrderBtn"
+                        icon="sap-icon://email"
+                        tooltip="Send Order by Email"
+                        press=".onEmailOrder"
+                        type="Transparent" />
+                </uxap:actions>
+
+            </uxap:ObjectPageDynamicHeaderTitle>
+
+        </uxap:headerTitle>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             HEADER CONTENT — Customer · Ordered · Shipped  |  Price
+             Matches screenshot: left col = labels+values, right = Price
+        ════════════════════════════════════════════════════════════ -->
+        <uxap:headerContent>
+
+            <!-- Left block: customer + dates (matching "Customer: Around the Horn / Ordered: ... / Shipped: ...") -->
+            <VBox class="sapUiSmallMarginEnd">
+                <Text text="Customer: {customerName}" />
+                <Text text="Ordered: {orderDate}"  class="sapUiTinyMarginTop" />
+                <Text text="Shipped: {shippedDate}" class="sapUiTinyMarginTop" />
+            </VBox>
+
+            <!-- Right block: Price label (bold value) -->
+            <VBox class="sapUiLargeMarginBegin">
+                <Label text="Price" />
+                <ObjectNumber
+                    number="{totalPrice}"
+                    unit="{currency}"
+                    emphasized="true"
+                    class="sapUiTinyMarginTop" />
+            </VBox>
+
+        </uxap:headerContent>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTIONS
+             Section 1 → Shipping Address   (truck icon tab)
+             Section 2 → Processor Info     (person icon tab)
+             Section 3 → Line Items      +   (always shown below)
+        ════════════════════════════════════════════════════════════ -->
+        <uxap:sections>
+            <uxap:ObjectPageSection title="Shipping Address">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Shipping Address">
+                        <uxap:blocks>
+                            <f:SimpleForm editable="false" layout="ResponsiveGridLayout">
+                                <f:content>
+                                    <Label text="Name" />
+                                    <Text text="{path: 'shippingAddress/name', targetType: 'any'}" />
+                                    <Label text="Street" />
+                                    <Text text="{path: 'shippingAddress/street', targetType: 'any'}" />
+                                    <Label text="Region" />
+                                    <Text text="{path: 'shippingAddress/region', targetType: 'any'}" />
+                                    <Label text="Country" />
+                                    <Text text="{path: 'shippingAddress/country', targetType: 'any'}" />
+                                </f:content>
+                            </f:SimpleForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+
+                    <uxap:ObjectPageSubSection title="Line Items">
+                        <uxap:blocks>
+                            <Table items="{items}">
+                                <columns>
+                                    <Column><Text text="Product" /></Column>
+                                    <Column><Text text="Price" /></Column>
+                                    <Column><Text text="Qty" /></Column>
+                                    <Column><Text text="Total" /></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{path: 'productName', targetType: 'any'}" />
+                                            <Text text="{path: 'unitPrice', targetType: 'any'}" />
+                                            <Text text="{path: 'quantity', targetType: 'any'}" />
+                                            <Text text="{path: 'total', targetType: 'any'}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection title="Processor Information">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Processor Information">
+                        <uxap:blocks>
+                            <HBox justifyContent="SpaceBetween">
+                                <f:SimpleForm title="Details" editable="false" layout="ResponsiveGridLayout">
+                                    <f:content>
+                                        <Label text="Name" />
+                                        <Text text="{path: 'processor/name', targetType: 'any'}" />
+                                        <Label text="Employee ID" />
+                                        <Text text="{path: 'processor/employeeId', targetType: 'any'}" />
+                                        <Label text="Job Title" />
+                                        <Text text="{path: 'processor/jobTitle', targetType: 'any'}" />
+                                    </f:content>
+                                </f:SimpleForm>
+                                <VBox alignItems="Center">
+                                    <Title text="Picture" />
+                                    <Avatar src="{processor/imagePath}" displaySize="XL" displayShape="Square" />
+                                </VBox>
+                            </HBox>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+
+                    <uxap:ObjectPageSubSection title="Line Items">
+                        <uxap:blocks>
+                            <Table items="{items}">
+                                <columns>
+                                    <Column><Text text="Product" /></Column>
+                                    <Column><Text text="Price" /></Column>
+                                    <Column><Text text="Qty" /></Column>
+                                    <Column><Text text="Total" /></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{path: 'productName', targetType: 'any'}" />
+                                            <Text text="{path: 'unitPrice', targetType: 'any'}" />
+                                            <Text text="{path: 'quantity', targetType: 'any'}" />
+                                            <Text text="{path: 'total', targetType: 'any'}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+
+    </uxap:ObjectPageLayout>
+
+</mvc:View>

@@ -1,0 +1,6 @@
+ID,orderNo,customerName,orderDate,shippedDate,status,totalPrice,currency,processor_ID
+550e8400-e29b-41d4-a716-446655440000,7991,Berglunds snabbköp,2016-11-21,2016-11-25,In Time,410418.22,EUR,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+550e8400-e29b-41d4-a716-446655440001,7918,Tortuga Restaurante,2016-09-18,2016-09-26,Urgent,8079.19,EUR,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+550e8400-e29b-41d4-a716-446655440002,7375,Around the Horn,2016-10-06,2016-10-14,In Time,272238.00,EUR,cccccccc-cccc-cccc-cccc-cccccccccccc
+550e8400-e29b-41d4-a716-446655440003,7311,Alfreds Futterkiste,2016-11-21,2016-11-25,In Time,9943.73,EUR,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+550e8400-e29b-41d4-a716-446655440004,6858,Tortuga Restaurante,2016-11-13,2016-11-14,In Time,31796.09,EUR,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb

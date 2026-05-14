@@ -1,0 +1,101 @@
+<mvc:View
+    controllerName="ordersui.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Orders"
+        showHeader="true">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="📦 Orders" level="H2" />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="resetBtn"
+                        icon="sap-icon://clear-filter"
+                        tooltip="Reset All Filters, Sorting &amp; Grouping"
+                        press=".onReset"
+                        type="Emphasized"
+                        visible="{= ${masterView>/isFiltered} || ${masterView>/isSorted} || ${masterView>/isGrouped} || ${masterView>/isSearched} }" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <SearchField
+                        id="searchField"
+                        width="100%"
+                        placeholder="Search by customer name..."
+                        liveChange=".onSearch"
+                        search=".onSearch" />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="filterBtn"
+                        icon="sap-icon://filter"
+                        tooltip="Filter"
+                        press=".onFilter"
+                        type="Default" />
+                    <Button
+                        id="sortBtn"
+                        icon="sap-icon://sort"
+                        tooltip="Sort"
+                        press=".onSort"
+                        type="Default" />
+                    <Button
+                        id="groupBtn"
+                        icon="sap-icon://group-2"
+                        tooltip="Group"
+                        press=".onGroup"
+                        type="Default" />
+                </contentRight>
+            </Bar>
+        </subHeader>
+
+        <content>
+
+            <List
+                id="ordersList"
+                items="{
+                    path: '/Orders'
+                }"
+                mode="SingleSelectMaster"
+                growing="true"
+                growingThreshold="20"
+                selectionChange=".onPress"
+                noDataText="No orders found">
+
+                <items>
+
+                    <ObjectListItem
+                        type="Navigation"
+                        title="{orderNo}"
+                        number="{totalPrice}"
+                        numberUnit="{currency}">
+
+                        <attributes>
+                            <ObjectAttribute
+                                title="Customer"
+                                text="{customerName}" />
+                            <ObjectAttribute
+                                title="Shipped"
+                                text="{shippedDate}" />
+                        </attributes>
+
+                    </ObjectListItem>
+
+                </items>
+
+            </List>
+
+        </content>
+
+    </Page>
+
+
+</mvc:View>

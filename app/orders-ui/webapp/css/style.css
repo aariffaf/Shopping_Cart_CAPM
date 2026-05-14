@@ -1,0 +1,19 @@
+.sapMPage {
+    background-color: #0b1220;
+}
+
+.sapUxAPObjectPageLayout {
+    background-color: #0b1220;
+}
+
+.sapMList {
+    background-color: #111827;
+}
+
+.sapMLIB {
+    border-bottom: 1px solid #1f2937;
+}
+
+.sapMLIBSelected {
+    background: #172554 !important;
+}
