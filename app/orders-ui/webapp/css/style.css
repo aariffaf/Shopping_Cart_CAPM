@@ -17,3 +17,10 @@
 .sapMLIBSelected {
     background: #172554 !important;
 }
+
+.productCard {
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #1e1e1e;
+}

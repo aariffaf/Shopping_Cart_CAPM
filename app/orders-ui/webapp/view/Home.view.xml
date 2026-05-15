@@ -1,0 +1,128 @@
+<mvc:View
+    controllerName="ordersui.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:grid="sap.ui.layout.cssgrid">
+
+    <Page
+        title="Welcome to the Shopping Cart">
+
+        <headerContent>
+
+            <Button
+                icon="sap-icon://cart"
+                type="Transparent"
+                press=".onOpenCart" />
+
+        </headerContent>
+
+        <content>
+
+            <!-- =========================
+                 CAROUSEL
+            ========================== -->
+
+            <Carousel
+                height="320px"
+                loop="true"
+                displayTime="4000"
+                class="sapUiSmallMarginBottom">
+
+                <Image
+                    src= "images/CreditCard_277268.jpg"
+                    width="100%"
+                    height="320px" />
+
+                <Image
+                    src="images/Shipping_273087.jpg"
+                    width="100%"
+                    height="320px" />
+
+                <Image
+                    src="images/InviteFriend_276352.jpg"
+                    width="100%"
+                    height="320px" />
+
+                <Image 
+                    src="images/Tablet_275777.jpg"
+                    width="100%"
+                    height="320px" />
+
+            </Carousel>
+
+            <!-- =========================
+                 PROMOTED ITEMS
+            ========================== -->
+
+            <Title
+                text="Promoted Items"
+                level="H1"
+                class="sapUiSmallMarginBottom" />
+
+            <f:GridList
+                id="productsGrid"
+                items="{
+                    path:'/Products_define',
+                    parameters:{
+                        $filter:'isPromoted eq true'
+                    }
+                }">
+
+                <f:customLayout>
+                    <grid:GridBoxLayout boxWidth="22rem" />
+                </f:customLayout>
+
+                <f:GridListItem>
+
+                    <VBox class="productCard sapUiSmallMargin">
+
+                        <Title
+                            text="{productName}"
+                            level="H3" />
+
+                        <ObjectStatus
+                            text="{availability}"
+                            state="Success"
+                            class="sapUiTinyMarginBottom" />
+
+                        <FlexBox
+                            justifyContent="Center"
+                            alignItems="Center"
+                            height="180px">
+
+                            <Image
+                                src="{productImage}"
+                                height="150px"
+                                width="150px" />
+
+                        </FlexBox>
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+
+                            <Button
+                                icon="sap-icon://cart"
+                                type="Emphasized"
+                                press=".onAddToCart" />
+
+                            <ObjectNumber
+                                number="{path:'price', targetType:'any'}"
+                                unit="{path:'currency', targetType:'any'}"
+                                emphasized="true" />
+
+                        </HBox>
+
+                    </VBox>
+
+                </f:GridListItem>
+
+            </f:GridList>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

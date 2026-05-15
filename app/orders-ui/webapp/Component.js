@@ -19,7 +19,7 @@ sap.ui.define([
             this.setModel(models.createDeviceModel(), "device");
 
             const oAppModel = new JSONModel({
-                layout: "OneColumn"
+                layout: "TwoColumnsMidExpanded"
             });
 
             this.setModel(oAppModel, "app");

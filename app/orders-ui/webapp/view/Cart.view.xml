@@ -1,0 +1,33 @@
+<mvc:View
+    controllerName="ordersui.controller.Cart"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Shopping Cart"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <List
+                items="{
+                    path:'cart>/items'
+                }">
+
+                <items>
+
+                    <ObjectListItem
+                        title="{cart>productName}"
+                        number="{cart>price}"
+                        numberUnit="{cart>currency}" />
+
+                </items>
+
+            </List>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

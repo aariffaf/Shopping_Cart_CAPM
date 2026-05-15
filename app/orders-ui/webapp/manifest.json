@@ -60,7 +60,8 @@
                     "pattern": "",
                     "name": "master",
                     "target": [
-                        "master"
+                        "master",
+                        "home"
                     ]
                 },
                 {
@@ -70,6 +71,15 @@
                         "master",
                         "detail"
                     ]
+                },
+                {
+                    "pattern": "cart",
+                    "name": "cart",
+                    "target": [
+                        "master",
+                        "home",
+                        "cart"
+                    ]
                 }
             ],
             "targets": {
@@ -77,9 +87,13 @@
                     "viewName": "Master",
                     "controlAggregation": "beginColumnPages"
                 },
-                "detail": {
-                    "viewName": "Detail",
+                "home": {
+                    "viewName": "Home",
                     "controlAggregation": "midColumnPages"
+                },
+                "cart": {
+                    "viewName": "Cart",
+                    "controlAggregation": "endColumnPages"
                 }
             }
         }

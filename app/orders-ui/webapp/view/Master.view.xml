@@ -4,90 +4,38 @@
     xmlns="sap.m">
 
     <Page
-        title="Orders"
+        title="Product Catalog"
         showHeader="true">
-
-        <customHeader>
-            <Bar>
-                <contentLeft>
-                    <Title text="📦 Orders" level="H2" />
-                </contentLeft>
-                <contentRight>
-                    <Button
-                        id="resetBtn"
-                        icon="sap-icon://clear-filter"
-                        tooltip="Reset All Filters, Sorting &amp; Grouping"
-                        press=".onReset"
-                        type="Emphasized"
-                        visible="{= ${masterView>/isFiltered} || ${masterView>/isSorted} || ${masterView>/isGrouped} || ${masterView>/isSearched} }" />
-                </contentRight>
-            </Bar>
-        </customHeader>
 
         <subHeader>
             <Bar>
-                <contentLeft>
+                <contentMiddle>
+
                     <SearchField
-                        id="searchField"
                         width="100%"
-                        placeholder="Search by customer name..."
-                        liveChange=".onSearch"
-                        search=".onSearch" />
-                </contentLeft>
-                <contentRight>
-                    <Button
-                        id="filterBtn"
-                        icon="sap-icon://filter"
-                        tooltip="Filter"
-                        press=".onFilter"
-                        type="Default" />
-                    <Button
-                        id="sortBtn"
-                        icon="sap-icon://sort"
-                        tooltip="Sort"
-                        press=".onSort"
-                        type="Default" />
-                    <Button
-                        id="groupBtn"
-                        icon="sap-icon://group-2"
-                        tooltip="Group"
-                        press=".onGroup"
-                        type="Default" />
-                </contentRight>
+                        placeholder="Search Categories..." />
+
+                </contentMiddle>
             </Bar>
         </subHeader>
 
         <content>
 
             <List
-                id="ordersList"
+                id="categoryList"
                 items="{
-                    path: '/Orders'
+                    path:'/Categories'
                 }"
                 mode="SingleSelectMaster"
-                growing="true"
-                growingThreshold="20"
-                selectionChange=".onPress"
-                noDataText="No orders found">
+                selectionChange=".onCategoryPress">
 
                 <items>
 
                     <ObjectListItem
-                        type="Navigation"
-                        title="{orderNo}"
-                        number="{totalPrice}"
-                        numberUnit="{currency}">
-
-                        <attributes>
-                            <ObjectAttribute
-                                title="Customer"
-                                text="{customerName}" />
-                            <ObjectAttribute
-                                title="Shipped"
-                                text="{shippedDate}" />
-                        </attributes>
-
-                    </ObjectListItem>
+                        type="Active"
+                        title="{categoryName}"
+                        number="{productCount}"
+                        numberUnit="Items" />
 
                 </items>
 
@@ -96,6 +44,5 @@
         </content>
 
     </Page>
-
 
 </mvc:View>

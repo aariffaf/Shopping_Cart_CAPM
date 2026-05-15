@@ -52,3 +52,32 @@ entity OrderItems : cuid {
 
     total       : Decimal(15, 2);
 }
+
+entity Categories : cuid {
+    categoryName : String;
+    productCount : Integer;
+    categoryCode : String(10);
+}
+
+entity Products : cuid {
+    productName  : String;
+    availability : String;
+    isPromoted   : Boolean;
+    productImage : String;
+}
+
+entity Products_define : cuid {
+    productName  : String;
+    MainCategory : String;
+    availability : String;
+    isPromoted   : Boolean;
+    productImage : String;
+    price        : Decimal(15,2);
+    currency     : String(3) default 'EUR';
+    supplierName : String;
+    description  : String;
+    weight       : Decimal(10,2);
+    measures     : String;
+    // Link to category so the count (34, 7) is not random
+    category     : Association to Categories;
+}
