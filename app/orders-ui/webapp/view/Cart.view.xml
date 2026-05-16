@@ -3,30 +3,42 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
 
+    <!-- Added showNavButton and navButtonPress attributes below -->
     <Page
         title="Shopping Cart"
         showNavButton="true"
         navButtonPress=".onNavBack">
 
-        <content>
+        <headerContent>
+            <Button
+                text="Edit"
+                icon="sap-icon://edit" />
+        </headerContent>
 
+        <content>
             <List
                 items="{
                     path:'cart>/items'
-                }">
-
+                }"
+                mode="Delete"
+                delete=".onDeleteItem">
                 <items>
-
                     <ObjectListItem
                         title="{cart>productName}"
                         number="{cart>price}"
                         numberUnit="{cart>currency}" />
-
                 </items>
-
             </List>
-
         </content>
+
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Proceed"
+                    type="Accept" />
+            </Toolbar>
+        </footer>
 
     </Page>
 

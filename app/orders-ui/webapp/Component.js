@@ -7,15 +7,15 @@ sap.ui.define([
     "use strict";
 
     return UIComponent.extend("ordersui.Component", {
-//Tells the app to look at manifest.json for configurations (like routing and data sources).
+        //Tells the app to look at manifest.json for configurations (like routing and data sources).
         metadata: {
             manifest: "json"
         },
 
         init: function () {
-// Runs the standard setup for a SAPUI5 component.
+            // Runs the standard setup for a SAPUI5 component.
             UIComponent.prototype.init.apply(this, arguments);
-// Sets up a model to check if the user is on a phone, tablet, or desktop.
+            // Sets up a model to check if the user is on a phone, tablet, or desktop.
             this.setModel(models.createDeviceModel(), "device");
 
             const oAppModel = new JSONModel({
@@ -24,7 +24,14 @@ sap.ui.define([
 
             this.setModel(oAppModel, "app");
 
+            const oCartModel = new JSONModel({
+                items: []
+            });
+
+            this.setModel(oCartModel, "cart");
             this.getRouter().initialize();
+
+            
         }
     });
 });

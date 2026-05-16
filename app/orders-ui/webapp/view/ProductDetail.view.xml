@@ -1,0 +1,74 @@
+<mvc:View
+    controllerName="ordersui.controller.ProductDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="{productName}">
+
+        <content>
+
+            <HBox
+                justifyContent="SpaceBetween"
+                class="sapUiLargeMargin">
+
+                <VBox width="60%">
+
+                    <Title
+                        text="{productName}"
+                        level="H1"/>
+
+                    <Text text="Supplier:"/>
+                    <Text text="{supplierName}"/>
+
+                    <Text text="Description:" class="sapUiSmallMarginTop"/>
+                    <Text text="{description}"/>
+
+                    <Text text="Weight:" class="sapUiSmallMarginTop"/>
+                    <Text text="{weight}"/>
+
+                    <Text text="Measures:" class="sapUiSmallMarginTop"/>
+                    <Text text="{measures}"/>
+
+                </VBox>
+
+                <VBox alignItems="End">
+
+                    <ObjectNumber
+                        number="{price}"
+                        unit="{currency}"/>
+
+                    <ObjectStatus
+                        text="{availability}"
+                        state="Success"
+                        class="sapUiSmallMarginTop"/>
+
+                </VBox>
+
+            </HBox>
+
+            <VBox alignItems="Center">
+
+                <Image
+                    src="{productImage}"
+                    width="500px"
+                    height="400px"/>
+
+            </VBox>
+
+            <HBox
+                justifyContent="Center"
+                class="sapUiLargeMarginTop">
+
+                <Button
+                    text="Add to Cart"
+                    type="Emphasized"
+                    press=".onAddToCart"/>
+
+            </HBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

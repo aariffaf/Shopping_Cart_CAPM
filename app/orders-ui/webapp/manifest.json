@@ -80,6 +80,19 @@
                         "home",
                         "cart"
                     ]
+                },
+                {
+                    "pattern": "category/{category}",
+                    "name": "categoryProducts",
+                    "target": [
+                        "categoryProducts",
+                        "productDetail"
+                    ]
+                },
+                {
+                    "name": "productDetail",
+                    "pattern": "product/{productId}",
+                    "target": "productDetail"
                 }
             ],
             "targets": {
@@ -94,6 +107,14 @@
                 "cart": {
                     "viewName": "Cart",
                     "controlAggregation": "endColumnPages"
+                },
+                "categoryProducts": {
+                    "viewName": "CategoryProducts",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "productDetail": {
+                    "viewName": "ProductDetail",
+                    "controlAggregation": "midColumnPages"
                 }
             }
         }

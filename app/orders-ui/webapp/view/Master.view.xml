@@ -4,40 +4,34 @@
     xmlns="sap.m">
 
     <Page
-        title="Product Catalog"
-        showHeader="true">
-
-        <subHeader>
-            <Bar>
-                <contentMiddle>
-
-                    <SearchField
-                        width="100%"
-                        placeholder="Search Categories..." />
-
-                </contentMiddle>
-            </Bar>
-        </subHeader>
+        title="Product Catalog">
 
         <content>
+
+            <!-- SEARCH -->
+
+            <SearchField
+                width="100%"
+                placeholder="Search Categories..."
+                liveChange=".onSearchCategory"
+                class="sapUiSmallMarginBottom" />
+
+            <!-- CATEGORY LIST -->
 
             <List
                 id="categoryList"
                 items="{
-                    path:'/Categories'
+                    path:'/Categories',
+                    templateShareable:false
                 }"
-                mode="SingleSelectMaster"
-                selectionChange=".onCategoryPress">
+                mode="None">
 
-                <items>
-
-                    <ObjectListItem
-                        type="Active"
-                        title="{categoryName}"
-                        number="{productCount}"
-                        numberUnit="Items" />
-
-                </items>
+                <ObjectListItem
+                    title="{categoryName}"
+                    number="{productCount}"
+                    numberUnit="Items"
+                    type="Active"
+                    press=".onCategoryPress" />
 
             </List>
 

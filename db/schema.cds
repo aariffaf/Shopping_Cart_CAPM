@@ -67,8 +67,9 @@ entity Products : cuid {
 }
 
 entity Products_define : cuid {
+    key ID           : String;
     productName  : String;
-    MainCategory : String;
+    mainCategory : String;
     availability : String;
     isPromoted   : Boolean;
     productImage : String;

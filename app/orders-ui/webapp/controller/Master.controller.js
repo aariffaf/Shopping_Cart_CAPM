@@ -8,24 +8,15 @@ sap.ui.define([
 
         onCategoryPress: function (oEvent) {
 
-            const oItem =
-                oEvent.getParameter("listItem");
+            var sCategory = oEvent.getSource()
+                .getBindingContext()
+                .getProperty("categoryName");
 
-            const oContext =
-                oItem.getBindingContext();
-
-            const sCategory =
-                oContext.getProperty("Category");
-
-            const oEventBus =
-                sap.ui.getCore().getEventBus();
-
-            oEventBus.publish(
-                "category",
-                "selected",
-                {
+            this.getOwnerComponent()
+                .getRouter()
+                .navTo("categoryProducts", {
                     category: sCategory
-                }
+                }, true
             );
         }
 

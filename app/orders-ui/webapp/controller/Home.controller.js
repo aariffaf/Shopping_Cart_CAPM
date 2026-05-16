@@ -43,14 +43,84 @@ sap.ui.define([
 
             const oFilter =
                 new sap.ui.model.Filter(
-                    "categoryCode",
+                    "mainCategory",
                     sap.ui.model.FilterOperator.EQ,
                     oData.category
                 );
 
             oBinding.filter([oFilter]);
-        }
+        },
 
+
+        onAddToCart: function (oEvent) {
+
+            const oContext =
+                oEvent.getSource()
+                    .getBindingContext();
+
+            const oProduct =
+                oContext.getObject();
+
+            const oCartModel =
+                this.getOwnerComponent()
+                    .getModel("cart");
+
+            const aItems =
+                oCartModel.getProperty("/items");
+
+            aItems.push({
+
+                productName:
+                    oProduct.productName,
+
+                price:
+                    oProduct.price,
+
+                currency:
+                    oProduct.currency
+
+            });
+
+            oCartModel.setProperty(
+                "/items",
+                aItems
+            );
+
+            sap.m.MessageToast.show(
+                "Added to Cart"
+            );
+        },
+
+        onOpenCart: function () {
+
+            const oAppModel =
+                this.getOwnerComponent()
+                    .getModel("app");
+
+            oAppModel.setProperty(
+                "/layout",
+                "ThreeColumnsMidExpanded"
+            );
+
+            const oRouter =
+                sap.ui.core.UIComponent
+                    .getRouterFor(this);
+
+            oRouter.navTo("cart");
+        },
+
+        onCategoryPress: function (oEvent) {
+
+            var oItem = oEvent.getSource();
+
+            var sCategory = oItem.getBindingContext()
+                .getProperty("categoryName");
+
+            this.getOwnerComponent().getRouter()
+                .navTo("categoryProducts", {
+                    category: sCategory
+                });
+        }
     });
 
 });

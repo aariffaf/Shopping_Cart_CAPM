@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="ordersui.controller.CategoryProducts"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="{appView>/selectedCategory}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <List
+            id="productsList"
+            items="{
+                path:'/Products_define'
+            }">
+
+            <CustomListItem
+                type="Active"
+                press=".onProductPress">
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Start"
+                    width="100%"
+                    class="sapUiSmallMargin">
+
+                    <HBox width="70%">
+                        
+                        <Image
+                            src="{productImage}"
+                            width="70px"
+                            height="70px"
+                            class="sapUiSmallMarginEnd"/>
+
+                        <VBox>
+                            <Title
+                                text="{productName}"
+                                level="H4"/>
+
+                            <Text text="{supplierName}"/>
+
+                            <Link text="Compare"/>
+                        </VBox>
+
+                    </HBox>
+
+                    <VBox alignItems="End">
+
+                        <ObjectNumber
+                            number="{price}"
+                            unit="{currency}"/>
+
+                        <ObjectStatus
+                            text="{availability}"
+                            state="Success"/>
+
+                    </VBox>
+
+                </HBox>
+
+            </CustomListItem>
+
+        </List>
+
+    </Page>
+
+</mvc:View>

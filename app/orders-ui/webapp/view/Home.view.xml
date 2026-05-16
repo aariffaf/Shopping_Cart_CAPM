@@ -26,7 +26,6 @@
             <Carousel
                 height="320px"
                 loop="true"
-                displayTime="4000"
                 class="sapUiSmallMarginBottom">
 
                 <Image
