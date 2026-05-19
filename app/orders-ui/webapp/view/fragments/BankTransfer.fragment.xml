@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+<VBox>
+
+    <Title text="Bank Transfer Details"/>
+
+    <Text text="Beneficiary Name: Singapore Hardware e-Commerce LTD"/>
+    <Text text="Bank: City Bank, Singapore Branch"/>
+    <Text text="Account Number: 06110702027218"/>
+
+</VBox>
+
+</core:FragmentDefinition>

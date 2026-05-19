@@ -52,6 +52,11 @@ sap.ui.define([
                     }
                 }
             });
+        },
+        onProceedCheckout: function () {
+            this.getOwnerComponent()
+                .getRouter()
+                .navTo("checkout");
         }
     }
     );

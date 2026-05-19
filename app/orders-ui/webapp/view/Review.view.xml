@@ -1,0 +1,263 @@
+<mvc:View
+    controllerName="ordersui.controller.Review"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Review Order"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <!-- ========================= -->
+            <!-- PRODUCTS -->
+            <!-- ========================= -->
+
+            <VBox class="sapUiLargeMarginBottom">
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <Title
+                        text="Products"
+                        level="H2" />
+
+                    <Button
+                        icon="sap-icon://edit"
+                        type="Transparent"
+                        press=".onEditCheckout" />
+
+                </HBox>
+
+                <List items="{cart>/items}">
+
+                    <CustomListItem>
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            alignItems="Center"
+                            width="100%">
+
+                            <!-- LEFT -->
+
+                            <HBox
+                                alignItems="Center"
+                                width="70%">
+
+                                <Image
+                                    src="{cart>productImage}"
+                                    width="80px"
+                                    height="80px"
+                                    class="sapUiSmallMarginEnd" />
+
+                                <VBox>
+
+                                    <Title
+                                        text="{cart>productName}"
+                                        level="H4" />
+
+                                    <Text
+                                        text="{cart>supplierName}" />
+
+                                    <ObjectStatus
+                                        text="{cart>availability}"
+                                        state="Success" />
+
+                                </VBox>
+
+                            </HBox>
+
+                            <!-- RIGHT -->
+
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{cart>price}"
+                                    unit="{cart>currency}" />
+
+                            </VBox>
+
+                        </HBox>
+
+                    </CustomListItem>
+
+                </List>
+
+            </VBox>
+
+            <!-- ========================= -->
+            <!-- PAYMENT TYPE -->
+            <!-- ========================= -->
+
+            <VBox class="sapUiLargeMarginBottom">
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <Title
+                        text="Payment Type"
+                        level="H2" />
+
+                    <Button
+                        icon="sap-icon://edit"
+                        type="Transparent"
+                        press=".onEditCheckout" />
+
+                </HBox>
+
+                <Text
+                    text="Selected Payment Type:" />
+
+                <Title
+                    text="{checkout>/paymentType}"
+                    level="H4" />
+
+            </VBox>
+
+            <!-- ========================= -->
+            <!-- PAYMENT DETAILS -->
+            <!-- ========================= -->
+
+            <VBox class="sapUiLargeMarginBottom">
+
+                <Title
+                    text="Payment Details"
+                    level="H2" />
+
+                <!-- COD -->
+
+                <VBox visible="{= ${review>/paymentType} === 'COD'}">
+
+                <Text text="First Name:" />
+                <Text text="{review>/cod/firstName}" />
+
+                <Text text="Last Name:" />
+                <Text text="{review>/cod/lastName}" />
+
+                <Text text="Phone Number:" />
+                <Text text="{review>/cod/phone}" />
+
+                <Text text="Email Address:" />
+                <Text text="{review>/cod/email}" />
+
+            </VBox>
+                <!-- BANK -->
+
+                <!-- BANK -->
+
+            <VBox
+                visible="{= ${review>/paymentType} === 'BANK'}">
+
+                <Text text="Beneficiary Name:" />
+                <Text text="Singapore Hardware e-Commerce LTD" />
+
+                <Text text="Bank:" />
+                <Text text="City Bank, Singapore Branch" />
+
+                <Text text="Account Number:" />
+                <Text text="06110702027218" />
+
+            </VBox>
+
+            <!-- CREDIT CARD -->
+
+            <VBox
+                visible="{= ${review>/paymentType} === 'CARD'}">
+
+                <Text text="Cardholder Name:" />
+                <Text text="{review>/card/holder}" />
+
+                <Text text="Card Number:" />
+                <Text text="{review>/card/number}" />
+
+                <Text text="Security Code:" />
+                <Text text="***" />
+
+                <Text text="Expiration Date:" />
+                <Text text="{review>/card/expiry}" />
+
+            </VBox>
+
+            </VBox>
+
+            <!-- ========================= -->
+            <!-- INVOICE ADDRESS -->
+            <!-- ========================= -->
+
+            <VBox class="sapUiLargeMarginBottom">
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <Title
+                        text="Invoice Address"
+                        level="H2" />
+
+                    <Button
+                        icon="sap-icon://edit"
+                        type="Transparent"
+                        press=".onEditCheckout" />
+
+                </HBox>
+
+                <Text text="{review>/invoice/address}" />
+                <Text text="{review>/invoice/city}" />
+                <Text text="{review>/invoice/zip}" />
+                <Text text="{review>/invoice/country}" />
+                <Text text="{review>/invoice/note}" />
+
+            </VBox>
+
+            <!-- ========================= -->
+            <!-- SHIPPING ADDRESS -->
+            <!-- ========================= -->
+
+            <VBox class="sapUiLargeMarginBottom">
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <Title
+                        text="Shipping Address"
+                        level="H2" />
+
+                    <Button
+                        icon="sap-icon://edit"
+                        type="Transparent"
+                        press=".onEditCheckout" />
+
+                </HBox>
+
+                <Text text="{review>/shipping/address}" />
+                <Text text="{review>/shipping/city}" />
+                <Text text="{review>/shipping/zip}" />
+                <Text text="{review>/shipping/country}" />
+                <Text text="{review>/shipping/note}" />
+
+            </VBox>
+
+        </content>
+
+        <footer>
+
+            <Toolbar>
+
+                <ToolbarSpacer />
+
+                <Button
+                    text="Place Order"
+                    type="Accept"
+                    press=".onPlaceOrder" />
+
+            </Toolbar>
+
+        </footer>
+
+    </Page>
+
+</mvc:View>

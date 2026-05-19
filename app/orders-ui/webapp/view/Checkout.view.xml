@@ -1,0 +1,212 @@
+<mvc:View
+    controllerName="ordersui.controller.Checkout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+<Page title="Checkout">
+
+    <content>
+
+        <Wizard id="checkoutWizard">
+
+            <!-- STEP 1 -->
+
+            <WizardStep
+                id="stepProducts"
+                title="Verify Products">
+
+                        <List items="{cart>/items}">
+
+            <CustomListItem>
+
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                    width="100%">
+
+                    <!-- LEFT -->
+
+                    <HBox
+                        alignItems="Center"
+                        width="70%">
+
+                        <Image
+                            src="{cart>productImage}"
+                            width="80px"
+                            height="80px"
+                            class="sapUiSmallMarginEnd" />
+
+                        <VBox>
+
+                            <Title
+                                text="{cart>productName}"
+                                level="H4" />
+
+                            <Text text="{cart>supplierName}" />
+
+                            <ObjectStatus
+                                text="{cart>availability}"
+                                state="Success" />
+
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- RIGHT -->
+
+                    <VBox alignItems="End">
+
+                        <ObjectNumber
+                            number="{cart>price}"
+                            unit="{cart>currency}" />
+
+                    </VBox>
+
+                </HBox>
+
+            </CustomListItem>
+
+        </List>
+
+            </WizardStep>
+
+            <!-- STEP 2 -->
+
+            <WizardStep
+                id="stepPayment"
+                title="Payment Options">
+
+                <VBox class="sapUiLargeMargin">
+
+                    <SegmentedButton
+                    id="paymentSegmentedButton"
+                    selectionChange=".onPaymentTypeChange"
+                    selectedKey="COD">
+
+                    <items>
+
+                        <SegmentedButtonItem
+                            key="COD"
+                            text="Cash on Delivery" />
+
+                        <SegmentedButtonItem
+                            key="BANK"
+                            text="Bank Transfer" />
+
+                        <SegmentedButtonItem
+                            key="CARD"
+                            text="Credit Card" />
+
+                    </items>
+
+                </SegmentedButton>
+
+                </VBox>
+
+            </WizardStep>
+
+            <!-- STEP 3 -->
+
+            <WizardStep
+                id="stepPaymentDetails"
+                title="Payment Details">
+
+                <VBox
+                    id="paymentContainer"
+                    class="sapUiLargeMargin">
+
+                </VBox>
+
+            </WizardStep>
+
+            <!-- STEP 4 -->
+
+            <WizardStep
+                id="stepInvoice"
+                title="Invoice Address">
+
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout">
+
+                    <Label text="Address"/>
+                    <Input
+                    id="invoiceAddress"
+                    required="true"/>
+
+                    <Label text="City"/>
+                    <Input
+                    id="invoiceCity"
+                    required="true"/>
+
+                    <Label text="Zip Code"/>
+                    <Input
+                    id="invoiceZipCode"
+                    required="true"/>
+
+                    <Label text="Country"/>
+                    <Input
+                    id="invoiceCountry"
+                    required="true"/>
+
+                    <Label text="Note"/>
+                    <TextArea rows="5"/>
+
+                </form:SimpleForm>
+
+            </WizardStep>
+
+            <!-- STEP 5 -->
+
+            <WizardStep
+                id="stepShipping"
+                title="Shipping Address">
+
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout">
+
+                    <Label text="Address"/>
+                    <Input
+                    id="shippingAddress"
+                    required="true"/>
+
+                    <Label text="City"/>
+                    <Input
+                    id="shippingCity"
+                    required="true"/>
+
+                    <Label text="Zip Code"/>
+                    <Input
+                    id="shippingZipCode"
+                    required="true"/>
+
+                    <Label text="Country"/>
+                    <Input
+                    id="shippingCountry"
+                    required="true"/>
+
+                    <Label text="Note"/>
+                    <TextArea
+                    id="invoiceNote"
+                    rows="5"/>
+
+                </form:SimpleForm>
+
+                <Button
+                text="Review Order"
+                type="Emphasized"
+                press=".onReviewOrder"/>
+
+            </WizardStep>
+
+        </Wizard>
+
+    </content>
+
+</Page>
+
+</mvc:View>

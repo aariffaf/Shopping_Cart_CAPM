@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="ordersui.controller.OrderSuccess"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Order Completed">
+
+        <content>
+
+            <VBox
+                class="sapUiLargeMargin">
+
+                <Title
+                    text="Thank you for your order!"
+                    level="H1"
+                    class="sapUiSmallMarginBottom" />
+
+                <Title
+                    text="Your order number: 20171941"
+                    level="H3"
+                    class="sapUiSmallMarginBottom" />
+
+                <Text
+                    text="You will receive an e-mail confirmation shortly."
+                    class="sapUiSmallMarginBottom" />
+
+                <Text
+                    text="When the shipment is ready, you will also get an e-mail notification."
+                    class="sapUiSmallMarginBottom" />
+
+                <Title
+                    text="Want to stay informed?"
+                    level="H4"
+                    class="sapUiMediumMarginTop" />
+
+                <FormattedText
+                    htmlText="
+                    Please subscribe to our monthly newsletter.
+                    Send a mail to
+                    &lt;a href='mailto:newsletter@openui5isgreat.corp'&gt;
+                    newsletter@openui5isgreat.corp
+                    &lt;/a&gt;
+                    ." />
+
+            </VBox>
+
+        </content>
+
+        <footer>
+
+            <Toolbar>
+
+                <ToolbarSpacer />
+
+                <Button
+                    text="Return to Shop"
+                    type="Emphasized"
+                    press=".onReturnHome" />
+
+            </Toolbar>
+
+        </footer>
+
+    </Page>
+
+</mvc:View>

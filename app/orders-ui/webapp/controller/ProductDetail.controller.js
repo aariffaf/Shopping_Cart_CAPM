@@ -25,24 +25,29 @@ sap.ui.define([
 
         onAddToCart: function () {
 
-            var oProduct = this.getView()
+            const oCartModel = this.getOwnerComponent()
+                .getModel("cart");
+
+            const aItems = oCartModel.getProperty("/items");
+
+            const oData = this.getView()
                 .getBindingContext()
                 .getObject();
 
-            var oComponent = this.getOwnerComponent();
+            aItems.push({
+                ID: oData.ID,
+                productName: oData.productName,
+                supplierName: oData.supplierName,
+                productImage: oData.productImage,
+                price: oData.price,
+                currency: oData.currency,
+                availability: oData.availability
+            });
 
-            var aCart = oComponent.getModel("cart")
-                .getProperty("/items");
-
-            aCart.push(oProduct);
-
-            oComponent.getModel("cart")
-                .setProperty("/items", aCart);
+            oCartModel.setProperty("/items", aItems);
 
             sap.m.MessageToast.show("Added to cart");
 
-            oComponent.getRouter()
-                .navTo("cart");
         },
 
         onNavBack: function () {

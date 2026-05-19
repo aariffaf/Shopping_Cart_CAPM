@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+<VBox>
+
+    <Label text="Cardholder Name"/>
+    <Input required="true"/>
+
+    <Label text="Card Number"/>
+    <Input required="true"/>
+
+    <Label text="Security Code"/>
+    <Input required="true"/>
+
+    <Label text="Expiration Date"/>
+    <Input
+        placeholder="MM/YYYY"
+        required="true"/>
+
+</VBox>
+
+</core:FragmentDefinition>

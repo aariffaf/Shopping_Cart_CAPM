@@ -65,14 +65,6 @@
                     ]
                 },
                 {
-                    "pattern": "Order/{orderId}",
-                    "name": "detail",
-                    "target": [
-                        "master",
-                        "detail"
-                    ]
-                },
-                {
                     "pattern": "cart",
                     "name": "cart",
                     "target": [
@@ -85,36 +77,73 @@
                     "pattern": "category/{category}",
                     "name": "categoryProducts",
                     "target": [
+                        "categoryProducts"
+                    ]
+                },
+                {
+                    "pattern": "product/{productId}",
+                    "name": "productDetail",
+                    "target": [
                         "categoryProducts",
                         "productDetail"
                     ]
                 },
                 {
-                    "name": "productDetail",
-                    "pattern": "product/{productId}",
-                    "target": "productDetail"
+                    "pattern": "checkout",
+                    "name": "checkout",
+                    "target": "checkout"
+                },
+                {
+                    "pattern": "review",
+                    "name": "review",
+                    "target": "review"
+                },
+                {
+                    "pattern": "success",
+                    "name": "success",
+                    "target": "success"
                 }
             ],
             "targets": {
                 "master": {
                     "viewName": "Master",
+                    "controlId": "fcl",
                     "controlAggregation": "beginColumnPages"
                 },
                 "home": {
                     "viewName": "Home",
+                    "controlId": "fcl",
                     "controlAggregation": "midColumnPages"
-                },
-                "cart": {
-                    "viewName": "Cart",
-                    "controlAggregation": "endColumnPages"
                 },
                 "categoryProducts": {
                     "viewName": "CategoryProducts",
+                    "controlId": "fcl",
                     "controlAggregation": "beginColumnPages"
                 },
                 "productDetail": {
                     "viewName": "ProductDetail",
+                    "controlId": "fcl",
                     "controlAggregation": "midColumnPages"
+                },
+                "cart": {
+                    "viewName": "Cart",
+                    "controlId": "fcl",
+                    "controlAggregation": "endColumnPages"
+                },
+                "checkout": {
+                    "viewName": "Checkout",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
+                },
+                "review": {
+                    "viewName": "Review",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
+                },
+                "success": {
+                    "viewName": "OrderSuccess",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
                 }
             }
         }

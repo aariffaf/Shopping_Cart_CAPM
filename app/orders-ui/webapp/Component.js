@@ -7,31 +7,38 @@ sap.ui.define([
     "use strict";
 
     return UIComponent.extend("ordersui.Component", {
-        //Tells the app to look at manifest.json for configurations (like routing and data sources).
+
         metadata: {
             manifest: "json"
         },
 
         init: function () {
-            // Runs the standard setup for a SAPUI5 component.
+            // Call the base component's init function
             UIComponent.prototype.init.apply(this, arguments);
-            // Sets up a model to check if the user is on a phone, tablet, or desktop.
+
+            // Set the device model
             this.setModel(models.createDeviceModel(), "device");
 
+            // Set the application layout model
             const oAppModel = new JSONModel({
                 layout: "TwoColumnsMidExpanded"
             });
-
             this.setModel(oAppModel, "app");
 
+            // Set the shopping cart model
             const oCartModel = new JSONModel({
                 items: []
             });
-
             this.setModel(oCartModel, "cart");
-            this.getRouter().initialize();
 
-            
+            // Set the checkout configuration model
+            const oCheckoutModel = new JSONModel({
+                paymentType: "COD"
+            });
+            this.setModel(oCheckoutModel, "checkout");
+
+            // Initialize the router at the very end
+            this.getRouter().initialize();
         }
     });
 });

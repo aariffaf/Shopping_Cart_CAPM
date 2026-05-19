@@ -36,7 +36,8 @@
                 <ToolbarSpacer />
                 <Button
                     text="Proceed"
-                    type="Accept" />
+                    type="Accept" 
+                    press=".onProceedCheckout"/>
             </Toolbar>
         </footer>
 

@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+<VBox>
+
+    <Label text="First Name"/>
+    <Input required="true"/>
+
+    <Label text="Last Name"/>
+    <Input required="true"/>
+
+    <Label text="Phone Number"/>
+    <Input required="true"/>
+
+    <Label text="Email"/>
+    <Input required="true"/>
+
+</VBox>
+
+</core:FragmentDefinition>

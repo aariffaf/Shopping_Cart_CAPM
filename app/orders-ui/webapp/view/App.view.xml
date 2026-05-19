@@ -5,6 +5,7 @@
     xmlns="sap.m"> <App id="app"> <f:FlexibleColumnLayout
             id="fcl"
             layout="{app>/layout}" />
+            <App id="mainApp"/>
     </App>
 
 </mvc:View>
