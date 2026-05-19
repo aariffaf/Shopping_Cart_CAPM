@@ -1,0 +1,115 @@
+<mvc:View
+    controllerName="ordersui.controller.Orders"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="My Orders"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <List
+                items="{
+                    path:'/ConfirmedOrders'
+                }">
+
+                <CustomListItem>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <!-- HEADER -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            alignItems="Center">
+
+                            <VBox>
+
+                                <Title
+                                    text="{orderNumber}"
+                                    level="H3" />
+
+                                <Text
+                                    text="{customerName}" />
+
+                            </VBox>
+
+                            <ObjectNumber
+                                number="{totalAmount}"
+                                unit="{currency}"
+                                emphasized="true" />
+
+                        </HBox>
+
+                        <!-- ORDER INFO -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            class="sapUiSmallMarginTop">
+
+                            <VBox>
+
+                                <Label text="Payment Type" />
+
+                                <Text
+                                    text="{paymentType}" />
+
+                            </VBox>
+
+                            <VBox>
+
+                                <Label text="Order Date" />
+
+                                <Text
+                                    text="{orderDate}" />
+
+                            </VBox>
+
+                        </HBox>
+
+                        <!-- ADDRESS -->
+
+                        <VBox class="sapUiSmallMarginTop">
+
+                            <Label text="Invoice Address" />
+
+                            <Text
+                                text="{invoiceAddress}" />
+
+                        </VBox>
+
+                        <VBox class="sapUiSmallMarginTop">
+
+                            <Label text="Shipping Address" />
+
+                            <Text
+                                text="{shippingAddress}" />
+
+                        </VBox>
+
+                        <!-- BUTTON -->
+
+                        <HBox
+                            justifyContent="End"
+                            class="sapUiMediumMarginTop">
+
+                            <Button
+                                text="View Details"
+                                type="Emphasized"
+                                press=".onViewOrderDetails" />
+
+                        </HBox>
+
+                    </VBox>
+
+                </CustomListItem>
+
+            </List>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

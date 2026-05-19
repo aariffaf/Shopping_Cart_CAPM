@@ -37,6 +37,8 @@ sap.ui.define([
             });
             this.setModel(oCheckoutModel, "checkout");
 
+            this.setModel(oAppModel, "app");
+
             // Initialize the router at the very end
             this.getRouter().initialize();
         }

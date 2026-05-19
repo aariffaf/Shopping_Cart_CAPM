@@ -15,6 +15,11 @@
                 type="Transparent"
                 press=".onOpenCart" />
 
+            <Button
+                icon="sap-icon://sales-order"
+                tooltip="Orders Page"
+                press=".onOpenOrders"/>
+
         </headerContent>
 
         <content>

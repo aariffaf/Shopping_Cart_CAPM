@@ -1,0 +1,161 @@
+<mvc:View
+    controllerName="ordersui.controller.OrderDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+
+<Page
+    title="Order Details"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
+
+    <content>
+
+        <!-- HEADER -->
+
+        <VBox class="sapUiLargeMargin">
+
+            <Title
+                text="{orderNumber}"
+                level="H1"/>
+
+            <HBox
+                justifyContent="SpaceBetween"
+                class="sapUiMediumMarginTop">
+
+                <VBox>
+
+                    <Label text="Customer"/>
+                    <Text text="{customerName}"/>
+
+                    <Label text="Payment Type"/>
+                    <Text text="{paymentType}"/>
+
+                </VBox>
+
+                <VBox>
+
+                    <Label text="Order Date"/>
+                    <Text text="{detail>orderDate}"/>
+
+                    <Label text="Total"/>
+                    <ObjectNumber
+                        number="{totalAmount}"
+                        unit="{currency}"
+                        emphasized="true"/>
+
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+
+        <!-- PRODUCTS -->
+
+        <Panel
+            headerText="Ordered Products"
+            class="sapUiMediumMargin">
+
+            <List items="{products}">
+
+                <CustomListItem>
+
+                    <HBox
+                        justifyContent="SpaceBetween"
+                        alignItems="Center"
+                        width="100%">
+
+                        <!-- LEFT -->
+
+                        <HBox alignItems="Center">
+
+                            <Image
+                                src="{image}"
+                                width="100px"
+                                height="100px"
+                                class="sapUiMediumMarginEnd"/>
+
+                            <VBox>
+
+                                <Title
+                                    text="{name}"
+                                    level="H4"/>
+
+                                <Text
+                                    text="{supplier}"/>
+
+                                <ObjectStatus
+                                    text="{availability}"
+                                    state="Success"/>
+
+                            </VBox>
+
+                        </HBox>
+
+                        <!-- RIGHT -->
+
+                        <VBox alignItems="End">
+
+                            <Text text="Qty: 1"/>
+
+                            <ObjectNumber
+                                number="{price}"
+                                unit="{currency}"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                </CustomListItem>
+
+            </List>
+
+        </Panel>
+
+        <!-- ADDRESS -->
+
+        <HBox
+            class="sapUiMediumMargin"
+            justifyContent="SpaceAround">
+
+            <!-- INVOICE -->
+
+            <Panel
+                headerText="Invoice Address"
+                width="45%">
+
+                <VBox class="sapUiMediumMargin">
+
+                    <Text text="{invoiceAddress}"/>
+                    <Text text="{invoiceCity}"/>
+                    <Text text="{invoiceZip}"/>
+                    <Text text="{invoiceCountry}"/>
+
+                </VBox>
+
+            </Panel>
+
+            <!-- SHIPPING -->
+
+            <Panel
+                headerText="Shipping Address"
+                width="45%">
+
+                <VBox class="sapUiMediumMargin">
+
+                    <Text text="{shippingAddress}"/>
+                    <Text text="{shippingCity}"/>
+                    <Text text="{shippingZip}"/>
+                    <Text text="{shippingCountry}"/>
+
+                </VBox>
+
+            </Panel>
+
+        </HBox>
+
+    </content>
+
+</Page>
+
+</mvc:View>

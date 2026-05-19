@@ -7,4 +7,6 @@ service OrdersService{
     entity Categories as projection on db.Categories;
     entity Products as projection on db.Products;
     entity Products_define as projection on db.Products_define;
+    entity ConfirmedOrders as projection on db.ConfirmedOrders;
+    entity ConfirmedOrderItems as projection on db.ConfirmedOrderItems;
 }

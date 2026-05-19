@@ -102,6 +102,19 @@
                     "pattern": "success",
                     "name": "success",
                     "target": "success"
+                },
+                {
+                    "pattern": "orders",
+                    "name": "orders",
+                    "target": "orders"
+                },
+                {
+                    "pattern": "orders/{orderId}",
+                    "name": "orderDetail",
+                    "target": [
+                        "orders",
+                        "orderDetail"
+                    ]
                 }
             ],
             "targets": {
@@ -144,6 +157,16 @@
                     "viewName": "OrderSuccess",
                     "controlId": "app",
                     "controlAggregation": "pages"
+                },
+                "orders": {
+                    "viewName": "Orders",
+                    "controlId": "fcl",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "orderDetail": {
+                    "viewName": "OrderDetail",
+                    "controlId": "fcl",
+                    "controlAggregation": "midColumnPages"
                 }
             }
         }

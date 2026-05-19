@@ -120,6 +120,12 @@ sap.ui.define([
                 .navTo("categoryProducts", {
                     category: sCategory
                 });
+        },
+        onOpenOrders: function () {
+
+            this.getOwnerComponent()
+                .getRouter()
+                .navTo("orders");
         }
     });
 

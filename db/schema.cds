@@ -82,3 +82,43 @@ entity Products_define : cuid {
     // Link to category so the count (34, 7) is not random
     category     : Association to Categories;
 }
+
+entity ConfirmedOrders {
+
+    key ID            : UUID;
+
+    orderNumber       : String(20);
+
+    customerName      : String(100);
+
+    paymentType       : String(30);
+
+    totalAmount       : Decimal(15,2);
+
+    currency          : String(10);
+
+    orderDate         : Timestamp;
+
+    invoiceAddress    : String(255);
+
+    shippingAddress   : String(255);
+
+}
+
+entity ConfirmedOrderItems {
+
+    key ID            : UUID;
+
+    order             : Association to ConfirmedOrders;
+
+    productName       : String(120);
+
+    quantity          : Integer;
+
+    price             : Decimal(15,2);
+
+    currency          : String(10);
+
+    productImage      : String(500);
+
+}
